@@ -1,0 +1,77 @@
+<!--En este div encapsulamostodo el formulario para habilitar y deshabilitar todos los campos mientras sea rol
+usuario(rol usuario se van a bloquear  y sino eres rol usuario no se van a bloquear)-->
+<div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<form class="form" role="form" autocomplete="off"  th:object="${userForm}" th:action="${signup}?@{/signup}:(${editMode} ?@{/editUser} :@{/userForm})" method="post">
+    <!--Es necesario para poder pasar la validacion del Model-->
+    <input class="form-control" type=hidden th:field="${userForm.id}"  th:if="${editMode}">
+    <input class="form-control" type=hidden name="password" value="xxxx" th:if="${editMode}">
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label">First name</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="text" th:field="${userForm.firstName}" th:disabled="${disableFields}">
+            <div class="alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</div>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label">Last
+            name</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="text" th:field="${userForm.lastName}" th:disabled="${disableFields}">
+            <div class="alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</div>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="email" th:field="${userForm.email}" th:disabled="${disableFields}">
+            <div class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label">Username</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="text" th:field="${userForm.username}" th:disabled="${disableFields}">
+            <div class="alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label th:text="Roles" class="col-lg-3 col-form-label form-control-label"></label>
+        <div class="col-lg-9">
+            <select class="form-control" th:size="${signup}?1:3" th:field="${userForm.roles}" th:disabled="${disableFields}">
+                <option th:each="role :${roles}" th:value="${role.id}" th:text="${role.name}">
+                </option>
+            </select>
+            <div class="alert-danger" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}">Name Error</div>
+        </div>
+    </div>
+
+    <div class="form-group row" th:if="${editMode==null or editMode==false}">
+        <label class="col-lg-3 col-form-label form-control-label">Password</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="password" th:field="${userForm.password}" th:disabled="${disableFields}">
+            <div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
+        </div>
+    </div>
+    <div class="form-group row" th:if="${editMode==null or editMode==false}">
+        <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="password" th:field="${userForm.confirmPassword}" th:disabled="${disableFields}" >
+            <div class="alert-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Name Error</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-12 text-center">
+            <a class="btn btn-secondary"  th:href="@{'/userForm/cancel'}">Cancel</a>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" th:if="${editMode}" data-target="#changePasswordModal">Change Password</button>
+            <input type="submit" class="btn btn-primary"
+                   value="Save Changes" th:value="${editMode}?'Save User':'Create User'">
+        </div>
+    </div>
+    <div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error MEssage</div>
+    <div class="alert alert-success text-center d-none" id="formSuccess" th:if="${editMode}" >Success MEssage</div>
+</form>
+</div>
