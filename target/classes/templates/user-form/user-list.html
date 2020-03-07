@@ -1,0 +1,50 @@
+<div class="table-responsive" xmlns:th="http://www.w3.org/1999/xhtml">
+    <table id="userList" class="table table-bordered table-hover table-striped">
+        <thead class="thead-light">
+        <tr>
+           <th scope="col">#</th>
+           <th scope="col">Nombre</th>
+           <th scope="col">Apellidos</th>
+           <th scope="col">Tipo de usuario</th>
+           <th scope="col">E-mail</th>
+           <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+<!-- ===Rol ADMIN puede editar cualquier usuario, Rol USER solo puede editar su propio usuario.===
+Aqui la validacion es validar por rol y validar si el usuario esta logeado o no para mostrar los campos o desactivarlos
+Es decir pregunta tiene rol de admin o de user, sino es admin entra al or y pregunta ¿el usuario es de error usuario? y solamente muestralo
+si el remoteUser(remoteUser es el que esta en la sesion del navegador) es igual a user.username(el username sale del th de arriba). -->
+                <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')} or (${#authorization.expression('hasRole(''ROLE_USER'')')} and ${#httpServletRequest.remoteUser==user.username})">
+                       <a href="#" th:href="@{'/editUser/'+ ${user.id}}"><i class="fas fa-edit"></i></a>
+                    </span>
+<!--Para editar verifica si tiene el rol de admin, sino tiene el rol de admin no muestra el icono de eliminar usuario, porque solo el admin
+puede eliminar usuarios-->
+                <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
+                    | <a href="#" th:onclick="'javascript:confirmDelete(\''+ ${user.id} +'\');'"><i class="fas fa-user-times"></i></a>
+                    </span>
+             </td>
+         </tr>
+         </tbody>
+    </table>
+    <div class="alert alert-danger text-center" th:if="${listErrorMessage}" th:text="${listErrorMessage}">Error Message</div>
+</div>
+
+<script type="text/javascript">
+function confirmDelete(id){
+	$('#deleteModal').modal('show');
+	$("#userIdHiddenInput").val(id);
+}
+
+function deleteUser(){
+	var id = $("#userIdHiddenInput").val();
+    window.location = "deleteUser/"+id;
+}
+</script>

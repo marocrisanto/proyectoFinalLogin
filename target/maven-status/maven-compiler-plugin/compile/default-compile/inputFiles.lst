@@ -1,0 +1,15 @@
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\controller\UserController.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\AplicacionApplication.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\WebSecurityConfig.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\entity\Role.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\entity\User.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\Exception\UsernameOrIdNotFound.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\repository\RoleRepository.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\service\UserDetailsServiceImpl.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\service\UserService.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\util\Passgenerator.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\MethodSecurityConfig.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\dto\ChangePasswordForm.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\Exception\CustomerFieldValidationException.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\service\UserServiceImpl.java
+C:\Users\omar_\Documents\SPRING TOOL 4\Aplicacion\src\main\java\com\prototipo\aplicacion\repository\UserRepository.java

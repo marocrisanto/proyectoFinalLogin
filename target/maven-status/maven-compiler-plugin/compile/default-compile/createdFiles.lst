@@ -1,0 +1,15 @@
+com\prototipo\aplicacion\entity\User.class
+com\prototipo\aplicacion\AplicacionApplication.class
+com\prototipo\aplicacion\Exception\CustomerFieldValidationException.class
+com\prototipo\aplicacion\WebSecurityConfig.class
+com\prototipo\aplicacion\service\UserService.class
+com\prototipo\aplicacion\MethodSecurityConfig.class
+com\prototipo\aplicacion\entity\Role.class
+com\prototipo\aplicacion\dto\ChangePasswordForm.class
+com\prototipo\aplicacion\controller\UserController.class
+com\prototipo\aplicacion\Exception\UsernameOrIdNotFound.class
+com\prototipo\aplicacion\service\UserServiceImpl.class
+com\prototipo\aplicacion\util\Passgenerator.class
+com\prototipo\aplicacion\service\UserDetailsServiceImpl.class
+com\prototipo\aplicacion\repository\RoleRepository.class
+com\prototipo\aplicacion\repository\UserRepository.class
